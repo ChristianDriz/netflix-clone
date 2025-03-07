@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.font-helvetica {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 200 700; /* Supports weights between 200 and 700 */
+    font-display: swap;
+    src: url("/fonts/Helvetica.ttf") format("ttf");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+    --color-red: #e50914;
+    --color-dark-red: #c11119;
+
+    --breakpoint-sm: 600px;
+    --breakpoint-4xl: 960px;
+    --breakpoint-7xl: 1280px;
+    --breakpoint-8xl: 1623px;
+    --breakpoint-9xl: 1920px;
+
+    --breakpoint-customXl: 1688px;
+
+    --spacing-4xl: 960px;
+    --spacing-7xl: 1212px;
+    --spacing-8xl: 1623px;
+    --spacing-9xl: 1920px;
+
+    --text-6xl: 64px;
+    --text-5xl: 56px;
+    --text-4xl: 40px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+.curve {
+    box-sizing: border-box;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    margin: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: solid .25rem transparent;
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    border-bottom: none;
+    background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.4) 80%, rgba(0, 0, 0, 0.1) 100%), black;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.curve:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin-top: -.25rem;
+    border-radius: inherit;
+    background: linear-gradient(to right, rgba(33, 13, 22, 1) 16%, rgba(184, 40, 105, 1), rgba(229, 9, 20, 1), rgba(184, 40, 105, 1), rgba(33, 13, 22, 1) 84%);
+}
+
+.trending {
+    position: relative;
+    -webkit-text-stroke: 0.25rem rgb(255, 255, 255);
+    text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+.trending:before {
+    content: attr(data-content);
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    -webkit-text-stroke: 0;
+    position: absolute;
+}
+
+.navbar_gradient {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8000) 0.000%, rgba(0, 0, 0, 0.7889) 8.333%, rgba(0, 0, 0, 0.7556) 16.67%, rgba(0, 0, 0, 0.7000) 25.00%, rgba(0, 0, 0, 0.6222) 33.33%, rgba(0, 0, 0, 0.5222) 41.67%, rgba(0, 0, 0, 0.4000) 50.00%, rgba(0, 0, 0, 0.2778) 58.33%, rgba(0, 0, 0, 0.1778) 66.67%, rgba(0, 0, 0, 0.1000) 75.00%, rgba(0, 0, 0, 0.04444) 83.33%, rgba(0, 0, 0, 0.01111) 91.67%, rgba(0, 0, 0, 0.000) 100.0%);
 }
