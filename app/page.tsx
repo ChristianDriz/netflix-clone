@@ -3,20 +3,27 @@ import Trending_Section from "./components/layout/TrendingSection/trending"
 import Reasons_Section from "./components/layout/ReasonsSection/reason";
 import FAQ_Section from "./components/layout/FAQSection/faq";
 
-import { Trending } from "./constants/Trending"
 import { Reasons } from "./constants/Reasons";
 import { FAQ } from "./constants/FAQ";
+import { getTrendingItems } from "@/lib/config";
 
-export default function page() {
+export const revalidate = 60; //1 minute
 
-    const shuffled_trending = [...Trending].sort(() => Math.random() - 0.5);
+export default async function page() {
 
-    return (
-        <div className="max-w-9xl mx-auto text-white">
-            <Hero_Section />
-            <Trending_Section trending={shuffled_trending}/>
-            <Reasons_Section reasons={Reasons}/>
-            <FAQ_Section faqs={FAQ}/>
-        </div>
-    )
+    try {
+        const trending = await getTrendingItems();
+
+        return (
+            <div className="max-w-9xl mx-auto text-white ">
+                <Hero_Section />
+                <Trending_Section trending={trending}/>
+                <Reasons_Section reasons={Reasons}/>
+                <FAQ_Section faqs={FAQ}/>
+            </div>
+        ) 
+
+    } catch (error) {
+        console.log("Error fetching data:", error);
+    }
 }
