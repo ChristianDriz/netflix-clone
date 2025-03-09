@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useEffect } from "react";
-import { Genres } from '@/app/constants/genres';
+import { Genres } from '@/app/constants/Genres';
 
 type SelectedTrendingItem = {
     overview: string;
